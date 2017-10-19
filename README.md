@@ -1,7 +1,7 @@
 # RocaCmTest
 Windows tool that analyzes your computer for Infineon TPM weak RSA keys (CVE-2017-15361) 
 
-The tool is directly inspired by this GitHub project (https://github.com/crocs-muni/roca) and uses its detection logic. This project just represents a more user-friendly and comprehensive version of detecting the vulnerability. It resuses and expands the project structure and the detection implementation.
+The tool is directly inspired by this GitHub project (https://github.com/crocs-muni/roca) and uses its detection logic. This project just represents a more user-friendly and comprehensive version of detecting the vulnerability. It reuses and expands the project structure and the detection implementation.
 
 This application is a stand-alone windows executable that upon execution will test your TPM chip and certificates in user and system store.  
 
