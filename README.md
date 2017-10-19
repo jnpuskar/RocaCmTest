@@ -13,6 +13,8 @@ The most common scenarion is executing the test by double-clicking the RocaCmTes
 
 After the tool is done a result is displayed with issues in red and warnings in yellow.
 
+Requirements: .NET 4 is required.
+
 The vulnerability is described here: https://crocs.fi.muni.cz/public/papers/rsa_ccs17
 
 Infineon info is here: https://www.infineon.com/cms/en/product/promopages/tpm-update/?redirId=59160
