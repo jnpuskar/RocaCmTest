@@ -11,6 +11,8 @@ In second phase depending on parameters the tool inspect certificate, directory 
 
 The most common scenarion is executing the test by double-clicking the RocaCmTest.exe. This results in testing the user & system certificate stores. Since we optimize user experience for this scenario the console window will remain opened till <ENTER> is pressed.
 
+Note that during phase 2 all certificates are analyzed. This means that you can also use it to evaluate your smart card against this issue!
+
 After the tool is done a result is displayed with issues in red and warnings in yellow.
 
 Requirements: .NET 4 is required.
