@@ -236,7 +236,7 @@ namespace RocaCmTest
                         {
                             ConsoleColor old_color = Console.ForegroundColor;
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("\nALERT - " + sum + " vulnerable ROCA (CVE-2017-15361) certificate(s) found!");
+                            Console.WriteLine("\nALERT: " + sum + " vulnerable ROCA (CVE-2017-15361) certificate(s) found!");
                             Console.ForegroundColor = old_color;
                             iTPMCertFlag = 1;
                         }
@@ -345,7 +345,7 @@ namespace RocaCmTest
             {
                 ConsoleColor old_color = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nALERT - " + sum + " vulnerable ROCA (CVE-2017-15361) certificates found!");
+                Console.WriteLine("ALERT: " + sum + " vulnerable ROCA (CVE-2017-15361) certificates found!");
                 Console.ForegroundColor = old_color;
                 return true;
             }
@@ -373,8 +373,7 @@ namespace RocaCmTest
             {
                 ConsoleColor old_color_ex = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(certFile + " ... not checked!");
-                Console.WriteLine("Error: " + e.Message);
+                Console.WriteLine(certFile + " ... Skipped. Reason: " + e.Message);
                 Console.ForegroundColor = old_color_ex;
             }
             return false;
@@ -385,7 +384,7 @@ namespace RocaCmTest
             var subject = cert.Subject;
             var issuer = cert.Issuer;
             var finger = cert.Thumbprint.ToString();
-            
+           
             try
             {
                 ConsoleColor old_color = Console.ForegroundColor;
@@ -405,8 +404,7 @@ namespace RocaCmTest
             {
                 ConsoleColor old_color_ex = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\nSubject: " + subject + "\nIssuer: " + issuer + "\nThumbprint: " + finger + "\nStatus: ... not checked!");
-                Console.WriteLine("Error: " + e.Message);
+                Console.WriteLine("\nSubject: " + subject + "\nIssuer: " + issuer + "\nThumbprint: " + finger + "\nStatus: ... Skipped. Reason: " + e.Message);
                 Console.ForegroundColor = old_color_ex;
             }
             return false;
@@ -418,7 +416,7 @@ namespace RocaCmTest
             Org.BouncyCastle.X509.X509Certificate x509Certificate = x509CertificateParser.ReadCertificate(File.ReadAllBytes(certFile));
             RsaKeyParameters rsaKeyParameters = x509Certificate.GetPublicKey() as RsaKeyParameters;
             if (rsaKeyParameters == null)
-                throw new InvalidOperationException("Incorrect X509 cert data read from " + certFile);
+                throw new InvalidOperationException(certFile + " is not valid RSA certificate or key");
             return RocaCmTest.IsVulnerable(rsaKeyParameters);
         }
         private static bool CertIsVulnerable(X509Certificate2 cert)
@@ -427,7 +425,7 @@ namespace RocaCmTest
             Org.BouncyCastle.X509.X509Certificate x509Certificate = DotNetUtilities.FromX509Certificate(cert);
             RsaKeyParameters rsaKeyParameters = x509Certificate.GetPublicKey() as RsaKeyParameters;
             if (rsaKeyParameters == null)
-                throw new InvalidOperationException("Incorrect X509Certificate2 data processed");
+                throw new InvalidOperationException("not valid RSA certificate");
             return RocaCmTest.IsVulnerable(rsaKeyParameters);
         }
 
