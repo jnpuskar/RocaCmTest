@@ -29,9 +29,10 @@ namespace RocaCmTest
             try
             {
                 // Phase 1. Check TPM behavior
-                Console.WriteLine("------------------------------------------------------------------------");
-                Console.WriteLine("--- Charismathics ROCA (CVE-2017-15361) Vulnerability Detection Tool ---");
-                Console.WriteLine("------------------------------------------------------------------------");
+                Console.WriteLine("-------------------------------------------------------------------");
+                Console.WriteLine("--- Infineon ROCA (CVE-2017-15361) Vulnerability Detection Tool ---");
+                Console.WriteLine("----------------------- Charismathics GmbH  -----------------------");
+                Console.WriteLine("-------------------------------------------------------------------");
                 Console.WriteLine("");
                 Console.WriteLine("Usage1: RocaCmTest.exe ... test cert stores");
                 Console.WriteLine("Usage2: RocaCmTest.exe <cert_file> ... test cert file");
