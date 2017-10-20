@@ -29,11 +29,15 @@ namespace RocaCmTest
             try
             {
                 // Phase 1. Check TPM behavior
-                Console.WriteLine("*** RocaCmTest tool will check for ROCA (CVE-2017-15361) vulnerability ***\n");
-                System.Console.WriteLine("Usage1: RocaCmTest.exe ... test cert stores");
-                System.Console.WriteLine("Usage2: RocaCmTest.exe <cert_file> ... test cert file");
-                System.Console.WriteLine("Usage3: RocaCmTest.exe <directory> ... test directory");
-                Console.WriteLine("\nStep 1: Try to generate RSA keypair using Platform Crypto Provider(TPM) and inspect it");
+                Console.WriteLine("------------------------------------------------------------------------");
+                Console.WriteLine("--- Charismathics ROCA (CVE-2017-15361) Vulnerability Detection Tool ---");
+                Console.WriteLine("------------------------------------------------------------------------");
+                Console.WriteLine("");
+                Console.WriteLine("Usage1: RocaCmTest.exe ... test cert stores");
+                Console.WriteLine("Usage2: RocaCmTest.exe <cert_file> ... test cert file");
+                Console.WriteLine("Usage3: RocaCmTest.exe <directory> ... test directory");
+                Console.WriteLine("");
+                Console.WriteLine("Step 1: Try to generate RSA keypair using Platform Crypto Provider(TPM) and inspect it");
                 
                 // Detect TPM
                 bool isTpmPresent = false;
@@ -184,6 +188,8 @@ namespace RocaCmTest
                 {
                     Console.WriteLine("No TPM found on this machine");
                 }
+
+                Console.WriteLine("");
 
                 if (args.Length == 0)
                 {
