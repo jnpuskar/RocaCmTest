@@ -7,6 +7,7 @@ using Org.BouncyCastle.Security;
 using System.Security.Cryptography;
 using System.Management;
 using System.Security.Cryptography.X509Certificates;
+using System.Diagnostics;
 
 namespace RocaCmTest
 {
@@ -306,8 +307,21 @@ namespace RocaCmTest
                 Console.WriteLine("Certificate(s) Test: ... not done");
             }
             Console.ForegroundColor = o_color;
-            Console.WriteLine("... Press ENTER to quit the test ...");
-            Console.ReadLine();
+
+            // Detect if we run by double-click and keep the console open till user presses ENTER
+            var myId = Process.GetCurrentProcess().Id;
+            var query = string.Format("SELECT ParentProcessId FROM Win32_Process WHERE ProcessId = {0}", myId);
+            var search = new ManagementObjectSearcher("root\\CIMV2", query);
+            var results = search.Get().GetEnumerator();
+            results.MoveNext();
+            var queryObj = results.Current;
+            var parentId = (uint)queryObj["ParentProcessId"];
+            var parent = Process.GetProcessById((int)parentId);
+            if(parent.ProcessName.Contains("explorer"))
+            {
+                Console.WriteLine("... Press ENTER to quit the test ...");
+                Console.ReadLine();
+            }           
         }
 
         private static bool PrintVulnerableResultStore(StoreLocation location)
